@@ -26,6 +26,7 @@ import {
   TREND_WINDOWS,
   ownerByName,
 } from "@/data/companies";
+import { formatFullDate, formatMoney } from "@/lib/companies";
 import { useCompaniesStore } from "@/stores/companies-store";
 import BuildingIcon from "@/public/assets/images/companies/detail/building.svg";
 import XIcon from "@/public/assets/images/companies/detail/x.svg";
@@ -55,10 +56,10 @@ export default function CompanyDetail() {
         <SheetHeader>
           <div className="flex items-center gap-2">
             <BuildingIcon aria-hidden className="text-icon size-3.5" />
-            <SheetTitle>Companies Detail</SheetTitle>
+            <SheetTitle>Brand Detail</SheetTitle>
           </div>
           <SheetDescription className="sr-only">
-            Account summary, pipeline health, activity and score cards
+            Assigned talent, retainer health, content cadence and score cards
           </SheetDescription>
           <SheetClose asChild>
             <Button
@@ -101,10 +102,25 @@ export default function CompanyDetail() {
                     </Tag>
                   ))}
                 </div>
+                <div className="caption-style text-soft flex flex-wrap items-center gap-x-3 gap-y-1 tabular-nums">
+                  <span>
+                    Retainer{" "}
+                    <span className="text-foreground">
+                      ${formatMoney(company.pipelineValue)}/mo
+                    </span>
+                  </span>
+                  <span>
+                    Renews{" "}
+                    <span className="text-foreground">
+                      {formatFullDate(company.renewalDate)}
+                    </span>
+                  </span>
+                  <span>Example data</span>
+                </div>
               </div>
             </div>
 
-            <DetailSection title="Account summary">
+            <DetailSection title="Assigned talent">
               <div className="lead-style flex flex-wrap items-center gap-x-4 gap-y-3">
                 <Button
                   variant="ghost"
@@ -127,12 +143,12 @@ export default function CompanyDetail() {
               </div>
             </DetailSection>
 
-            <DetailSection title="Pipeline health">
+            <DetailSection title="Retainer health">
               <PipelineHealth company={company} />
             </DetailSection>
 
             <DetailSection
-              title="Activity trend"
+              title="Content cadence"
               action={
                 <FilterMenu
                   value={trendWindow}

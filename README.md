@@ -1,4 +1,22 @@
-# Kargul Starter
+# 1441 Brand Retainer Pipeline (EXAMPLE / demo)
+
+> **Example data, not real 1441 brands or amounts.** Every brand, talent name,
+> retainer amount and renewal date in this repo is fictional and invented for a
+> clickable demo. No auth, no database; everything is seeded in `data/`.
+
+A reskin of a sales CRM table as a brand-retainer pipeline for 1441 Collective:
+brands, retainer stage (Prospect / Proposal / Active retainer / Renewal due /
+Churned), monthly retainer, renewal date and the talent assigned to each deal.
+
+## Attribution
+
+Forked from [kargulstudio/sales-crm](https://github.com/kargulstudio/sales-crm)
+by Kargul Studio, used under the MIT License (see `LICENSE`, copyright notice
+retained). Upstream history is preserved in this repo.
+
+---
+
+## Upstream README (Kargul Starter)
 
 Next.js 16 + React 19 + Tailwind CSS 4 boilerplate. Read `CONVENTIONS.md` before writing any component, section, or page — it is the whole spec for how this repo is built.
 

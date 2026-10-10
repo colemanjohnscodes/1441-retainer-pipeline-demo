@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "Sales CRM";
+export const SITE_NAME = "1441 Brand Retainer Pipeline (Example)";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
-export const SITE_DESCRIPTION = "Company pipeline for the sales team.";
+export const SITE_DESCRIPTION =
+  "Clickable demo of a brand-retainer pipeline. Example data only, not real 1441 brands or amounts.";
 export const DEFAULT_OG_IMAGE = "/opengraph-image.jpg";
 
 export function absoluteUrl(path: string) {
@@ -28,7 +29,7 @@ export type SiteRoute = {
 export const SITE_ROUTES: SiteRoute[] = [
   {
     path: "/",
-    title: "Companies",
+    title: "Brand Retainers",
     description: SITE_DESCRIPTION,
     changeFrequency: "weekly",
     priority: 1,

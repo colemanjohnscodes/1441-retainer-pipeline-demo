@@ -54,7 +54,7 @@ export default function CommandMenu() {
       open={open}
       onOpenChange={setOpen}
       title="Search"
-      description="Search companies by name, owner, segment or stage"
+      description="Search brands by name, talent, category or stage"
       className="max-w-[960px]"
       onCloseAutoFocus={(event) => {
         if (actionRan.current) event.preventDefault();
@@ -66,7 +66,7 @@ export default function CommandMenu() {
         <CommandInput
           value={query}
           onValueChange={setQuery}
-          placeholder="Search companies, owners, stages…"
+          placeholder="Search brands, talent, stages…"
           trailing={<Kbd>Esc</Kbd>}
         />
         <CommandTableHeader />
@@ -85,7 +85,7 @@ export default function CommandMenu() {
           <CommandGroup heading="Actions">
             <CommandItem
               value="new-company"
-              keywords={["New Company", "Add", "Create"]}
+              keywords={["New Brand", "Add", "Create"]}
               onSelect={() => run(() => setNewCompanyOpen(true))}
             >
               <span className="bg-muted flex size-6 shrink-0 items-center justify-center rounded-md shadow-[0px_0px_0px_1px_#232323]">

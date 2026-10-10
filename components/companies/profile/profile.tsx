@@ -51,10 +51,10 @@ export default function Profile() {
     : 0;
 
   const stats = [
-    { label: "Accounts", value: String(accounts.length) },
-    { label: "Open deals", value: String(openDeals) },
-    { label: "Pipeline", value: `$${formatMoney(pipeline)}` },
-    { label: "Avg. win", value: `${avgWin}%` },
+    { label: "Brands", value: String(accounts.length) },
+    { label: "Deliverables", value: String(openDeals) },
+    { label: "Retainer / mo", value: `$${formatMoney(pipeline)}` },
+    { label: "Avg. renewal", value: `${avgWin}%` },
   ];
 
   function showAccounts() {
@@ -71,7 +71,7 @@ export default function Profile() {
         <SheetHeader>
           <div className="flex items-center gap-2">
             <UsersIcon aria-hidden className="text-icon size-3.5" />
-            <SheetTitle>{isCurrentUser ? "My Profile" : "Owner Profile"}</SheetTitle>
+            <SheetTitle>{isCurrentUser ? "My Profile" : "Talent Profile"}</SheetTitle>
           </div>
           <SheetDescription className="sr-only">
             Contact details, pipeline summary and assigned accounts
@@ -123,7 +123,7 @@ export default function Profile() {
               </div>
             </DetailSection>
 
-            <DetailSection title={isCurrentUser ? "Team pipeline" : "Pipeline"}>
+            <DetailSection title={isCurrentUser ? "Team retainers" : "Retainers"}>
               <div className="grid grid-cols-2 gap-2">
                 {stats.map((stat) => (
                   <div
@@ -142,7 +142,7 @@ export default function Profile() {
             </DetailSection>
 
             <DetailSection
-              title={isCurrentUser ? "Team accounts" : "Accounts"}
+              title={isCurrentUser ? "All brands" : "Brands"}
               className="shadow-none"
             >
               {accounts.length > 0 ? (
@@ -176,7 +176,7 @@ export default function Profile() {
             onClick={showAccounts}
             disabled={accounts.length === 0}
           >
-            {isCurrentUser ? "Show all accounts" : "Filter table by owner"}
+            {isCurrentUser ? "Show all brands" : "Filter table by talent"}
           </Button>
         </SheetFooter>
       </SheetContent>

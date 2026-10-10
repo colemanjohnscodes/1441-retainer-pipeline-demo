@@ -24,7 +24,7 @@ import UserPlusIcon from "@/public/assets/images/companies/sidebar/user-plus.svg
 import MessageQuestionIcon from "@/public/assets/images/companies/sidebar/message-question.svg";
 import WalletIcon from "@/public/assets/images/companies/sidebar/wallet.svg";
 
-const BASE_COMPANY_COUNT = 223;
+const BASE_COMPANY_COUNT = 0;
 
 export default function SidebarContent() {
   const companyCount = useCompaniesStore((state) => state.companies.length);
@@ -35,10 +35,10 @@ export default function SidebarContent() {
         <Logo aria-hidden className="size-8 shrink-0 overflow-visible" />
         <div className="flex min-w-0 flex-col gap-1">
           <span className="lead-style block truncate font-medium tracking-[-0.01em]">
-            Sales CRM
+            1441 Collective
           </span>
           <span className="caption-style text-subtle block truncate">
-            Company pipeline
+            Brand retainers (example)
           </span>
         </div>
       </div>
@@ -48,38 +48,38 @@ export default function SidebarContent() {
           <SidebarSection className="border-sidebar-border border-b">
             <SidebarNavItem
               icon={BuildingIcon}
-              label="Companies"
+              label="Brands"
               count={BASE_COMPANY_COUNT + companyCount}
               active
             />
-            <SidebarNavItem icon={ClipboardIcon} label="Deals Board" />
-            <SidebarNavItem icon={BarChartIcon} label="Forecast" count={9} />
+            <SidebarNavItem icon={ClipboardIcon} label="Retainer Board" />
+            <SidebarNavItem icon={BarChartIcon} label="Renewals" count={4} />
             <SidebarNavItem icon={ListIcon} label="Activities" />
-            <SidebarNavItem icon={BookClosedIcon} label="Contacts" count={38} />
-            <SidebarNavItem icon={MailIcon} label="Email Sequences" />
+            <SidebarNavItem icon={BookClosedIcon} label="Talent Roster" count={9} />
+            <SidebarNavItem icon={MailIcon} label="Brand Outreach" />
           </SidebarSection>
 
           <SidebarSection
             title="Team"
             className="border-sidebar-border border-b"
           >
-            <SidebarNavItem icon={TargetIcon} label="Strategic AEs" />
-            <SidebarNavItem icon={TargetAltIcon} label="Mid Market" />
-            <SidebarNavItem icon={UsersIcon} label="SDR Team" />
+            <SidebarNavItem icon={TargetIcon} label="Partnerships" />
+            <SidebarNavItem icon={TargetAltIcon} label="Talent Management" />
+            <SidebarNavItem icon={UsersIcon} label="Creative Ops" />
           </SidebarSection>
 
           <SidebarSection
             title="Reporting"
             className="border-sidebar-border border-b"
           >
-            <SidebarNavItem icon={BarChartAltIcon} label="Q1 Forecast" />
-            <SidebarNavItem icon={AlertTriangleIcon} label="Slipping Deals" />
+            <SidebarNavItem icon={BarChartAltIcon} label="Q4 Renewals" />
+            <SidebarNavItem icon={AlertTriangleIcon} label="At-risk Retainers" />
           </SidebarSection>
 
           <SidebarSection title="Pipelines">
-            <SidebarNavItem icon={DotYellow} label="North America" />
-            <SidebarNavItem icon={DotPink} label="EMEA Enterprise" />
-            <SidebarNavItem icon={DotPurple} label="APAC Expansion" />
+            <SidebarNavItem icon={DotYellow} label="Beauty & Wellness" />
+            <SidebarNavItem icon={DotPink} label="Fashion & Lifestyle" />
+            <SidebarNavItem icon={DotPurple} label="Food & Bev" />
           </SidebarSection>
         </nav>
       </ScrollArea>
@@ -96,15 +96,15 @@ export default function SidebarContent() {
       <div className="border-sidebar-border bg-sidebar-accent flex shrink-0 items-center justify-between gap-2 border-b p-4">
         <div className="flex flex-col gap-2">
           <span className="lead-style block font-medium tracking-[-0.01em]">
-            14 Days
+            Demo build
           </span>
           <span className="caption-style text-subtle block">
-            Left on trials
+            Example data only
           </span>
         </div>
         <Button variant="muted" size="md">
           <WalletIcon aria-hidden className="size-3.5" />
-          Add Billings
+          Demo
         </Button>
       </div>
     </div>

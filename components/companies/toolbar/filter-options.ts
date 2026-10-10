@@ -8,7 +8,7 @@ import {
 import { ALL_OWNERS, ANY_STAGE } from "@/lib/companies";
 
 export const OWNER_OPTIONS = [
-  { value: ALL_OWNERS, label: "All Owners" },
+  { value: ALL_OWNERS, label: "All Talent" },
   ...OWNERS.map((owner) => ({ value: owner.name, label: owner.name })),
 ];
 

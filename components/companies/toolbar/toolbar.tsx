@@ -39,7 +39,7 @@ export default function CompaniesToolbar() {
       stage,
       activityWindow,
     });
-    downloadCsv(`companies-${TODAY}.csv`, companiesCsvRows(visible));
+    downloadCsv(`example-retainers-${TODAY}.csv`, companiesCsvRows(visible));
   }
 
   return (
@@ -54,7 +54,7 @@ export default function CompaniesToolbar() {
           onChange={(value) => setSortBy(value as SortKey)}
         />
         <FilterMenu
-          label="Filter"
+          label="Talent"
           value={owner}
           options={OWNER_OPTIONS}
           onChange={setOwner}
@@ -84,7 +84,7 @@ export default function CompaniesToolbar() {
           onClick={() => setNewCompanyOpen(true)}
         >
           <PlusIcon aria-hidden className="size-3" />
-          New Company
+          New Brand
         </Button>
       </div>
     </div>

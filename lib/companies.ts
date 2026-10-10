@@ -7,7 +7,7 @@ export type CompanyFilters = {
   activityWindow: number;
 };
 
-export const TODAY = "2026-09-14";
+export const TODAY = "2026-10-10";
 
 export const ALL_OWNERS = "all";
 export const ANY_STAGE = "any";
@@ -31,7 +31,7 @@ export function activeFilterCount({
   ].filter(Boolean).length;
 }
 
-const TAG_CHAR_BUDGET = 20;
+const TAG_CHAR_BUDGET = 28;
 
 export function filterCompanies(
   companies: Company[],
@@ -51,6 +51,8 @@ export function filterCompanies(
         return a.name.localeCompare(b.name);
       case "lastInteraction":
         return b.lastInteraction.date.localeCompare(a.lastInteraction.date);
+      case "renewalDate":
+        return a.renewalDate.localeCompare(b.renewalDate);
       case "openDeals":
         return b.openDeals - a.openDeals;
       case "winProbability":
@@ -64,12 +66,13 @@ export function filterCompanies(
 export function companiesCsvRows(companies: Company[]) {
   return [
     [
-      "Company",
-      "Segment & Stage",
-      "Account Owner",
-      "Open Deals",
-      "Pipeline Value",
-      "Win Probability (%)",
+      "Brand (EXAMPLE)",
+      "Category & Retainer Stage",
+      "Talent",
+      "Deliverables / mo",
+      "Monthly Retainer (example $)",
+      "Renewal Likelihood (%)",
+      "Renewal Date",
       "Last Interaction Date",
       "Last Interaction",
     ],
@@ -80,6 +83,7 @@ export function companiesCsvRows(companies: Company[]) {
       company.openDeals,
       company.pipelineValue,
       company.winProbability,
+      company.renewalDate,
       company.lastInteraction.date,
       company.lastInteraction.label,
     ]),
@@ -103,9 +107,9 @@ export function splitTags(tags: Company["tags"]) {
 
 export function companyHealth(company: Company) {
   return {
-    discovery: Math.round(company.winProbability * 0.372),
-    evaluation: Math.round(company.winProbability * 0.651),
-    procurement: Math.round(company.winProbability * 0.372),
+    discovery: Math.min(100, Math.round(company.winProbability * 1.08)),
+    evaluation: Math.round(company.winProbability * 0.82),
+    procurement: Math.round(company.winProbability * 0.64),
   };
 }
 
@@ -141,6 +145,16 @@ export function formatDate(iso: string) {
 
 export function formatMoney(value: number) {
   return value.toLocaleString("en-US");
+}
+
+export function formatFullDate(iso: string) {
+  const [year] = iso.split("-");
+  return `${formatDate(iso)}, ${year}`;
+}
+
+export function daysUntil(iso: string) {
+  const day = 24 * 60 * 60 * 1000;
+  return Math.round((Date.parse(iso) - Date.parse(TODAY)) / day);
 }
 
 export function daysSince(iso: string) {

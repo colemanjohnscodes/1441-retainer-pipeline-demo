@@ -75,7 +75,7 @@ export default function CompaniesTable() {
                               : false
                         }
                         onCheckedChange={toggleAll}
-                        aria-label="Select all companies"
+                        aria-label="Select all brands"
                       />
                       {column.label}
                     </span>

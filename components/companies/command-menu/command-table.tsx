@@ -15,12 +15,12 @@ export const COMMAND_TABLE_GRID =
   "grid grid-cols-[minmax(0,1fr)_96px] gap-x-4 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)_minmax(0,1fr)_96px] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.5fr)_minmax(0,1.1fr)_96px_120px_minmax(0,1fr)]";
 
 const HEADERS = [
-  { label: "Company", className: "" },
-  { label: "Segment & Stage", className: "hidden md:block" },
-  { label: "Account owner", className: "hidden md:block" },
-  { label: "Pipeline", className: "text-right" },
-  { label: "Win probability", className: "hidden text-right lg:block" },
-  { label: "Last interaction", className: "hidden lg:block" },
+  { label: "Brand", className: "" },
+  { label: "Category & Stage", className: "hidden md:block" },
+  { label: "Talent", className: "hidden md:block" },
+  { label: "Retainer / mo", className: "text-right" },
+  { label: "Renewal likelihood", className: "hidden text-right lg:block" },
+  { label: "Last touchpoint", className: "hidden lg:block" },
 ];
 
 export function CommandTableHeader() {

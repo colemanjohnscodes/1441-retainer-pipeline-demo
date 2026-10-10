@@ -20,10 +20,10 @@ type Stat = {
 export default function ActivityTrend({ company }: ActivityTrendProps) {
   const activity = companyActivity(company);
   const stats: Stat[] = [
-    { icon: CursorClickIcon, label: "Total touches", value: activity.touches },
-    { icon: MailIcon, label: "Emails", value: activity.emails },
-    { icon: CalendarIcon, label: "Meetings", value: activity.meetings },
-    { icon: PhoneCallIcon, label: "Calls & notes", value: activity.calls },
+    { icon: CursorClickIcon, label: "Total deliverables", value: activity.touches },
+    { icon: MailIcon, label: "Posts", value: activity.emails },
+    { icon: CalendarIcon, label: "Brand check-ins", value: activity.meetings },
+    { icon: PhoneCallIcon, label: "Revisions & notes", value: activity.calls },
   ];
 
   return (

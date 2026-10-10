@@ -9,7 +9,13 @@ import { TableCell, TableRow } from "@/components/_ui/table";
 import SegmentBar from "@/components/_common/segment-bar";
 import Sparkline from "@/components/_common/sparkline";
 import { TAG_TONES, ownerByName, type Company } from "@/data/companies";
-import { formatDate, formatMoney, splitTags } from "@/lib/companies";
+import {
+  daysUntil,
+  formatDate,
+  formatFullDate,
+  formatMoney,
+  splitTags,
+} from "@/lib/companies";
 import { cn } from "@/lib/utils";
 import {
   TABLE_CELL_CLASS,
@@ -31,6 +37,24 @@ type CompanyRowProps = {
 
 function cellClass(key: TableColumnKey) {
   return cn(TABLE_CELL_CLASS, columnClass(key));
+}
+
+function RenewalDate({ iso }: { iso: string }) {
+  const days = daysUntil(iso);
+  const tone =
+    days < 0
+      ? "text-muted-foreground"
+      : days <= 45
+        ? "text-[#f5b14c]"
+        : "text-foreground";
+  return (
+    <span className={cn("flex items-center gap-1.5", tone)}>
+      {formatFullDate(iso)}
+      <span className="caption-style text-muted-foreground">
+        {days < 0 ? "lapsed" : `in ${days}d`}
+      </span>
+    </span>
+  );
 }
 
 function stop(event: MouseEvent) {
@@ -109,6 +133,9 @@ export default function CompanyRow({
           <SegmentBar percent={company.winProbability} className="w-[74px]" />
           <span className="w-[4ch] text-right">{company.winProbability}%</span>
         </span>
+      </TableCell>
+      <TableCell role="cell" className={cellClass("renewalDate")}>
+        <RenewalDate iso={company.renewalDate} />
       </TableCell>
       <TableCell role="cell" className={cellClass("trend")}>
         <Sparkline values={company.trend} />

@@ -122,7 +122,7 @@ export default function MobileFilters({ className }: MobileFiltersProps) {
               </Select>
             </Field>
 
-            <Field label="Account owner" htmlFor="mobile-owner">
+            <Field label="Talent" htmlFor="mobile-owner">
               <Select value={owner} onValueChange={setOwner}>
                 <SelectTrigger id="mobile-owner">
                   <SelectValue />

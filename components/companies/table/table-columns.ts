@@ -1,26 +1,31 @@
 export const TABLE_COLUMNS = [
-  { key: "name", label: "Companies", className: "justify-start" },
-  { key: "segment", label: "Segment & Stage", className: "justify-start" },
-  { key: "owner", label: "Account Owner", className: "justify-start" },
+  { key: "name", label: "Brands", className: "justify-start" },
+  { key: "segment", label: "Category & Retainer Stage", className: "justify-start" },
+  { key: "owner", label: "Talent", className: "justify-start" },
   {
     key: "openDeals",
-    label: "Open Deals",
+    label: "Deliverables / mo",
     className: "justify-end tabular-nums",
   },
   {
     key: "pipelineValue",
-    label: "Pipeline Value",
+    label: "Monthly Retainer",
     className: "justify-end tabular-nums",
   },
   {
     key: "winProbability",
-    label: "Win Probability",
+    label: "Renewal Likelihood",
     className: "justify-end tabular-nums",
   },
-  { key: "trend", label: "Activity Trend", className: "justify-center" },
+  {
+    key: "renewalDate",
+    label: "Renewal Date",
+    className: "justify-start tabular-nums",
+  },
+  { key: "trend", label: "Content Cadence", className: "justify-center" },
   {
     key: "lastInteraction",
-    label: "Last Interaction",
+    label: "Last Touchpoint",
     className: "justify-start",
   },
   { key: "action", label: "Action", className: "justify-center" },
@@ -29,7 +34,7 @@ export const TABLE_COLUMNS = [
 export type TableColumnKey = (typeof TABLE_COLUMNS)[number]["key"];
 
 export const TABLE_GRID_CLASS =
-  "grid min-w-max grid-cols-[repeat(9,max-content)] justify-between";
+  "grid min-w-max grid-cols-[repeat(10,max-content)] justify-between";
 
 export const TABLE_ROW_CLASS = "col-span-full grid grid-cols-subgrid";
 

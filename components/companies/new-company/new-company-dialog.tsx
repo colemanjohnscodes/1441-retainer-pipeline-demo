@@ -51,6 +51,7 @@ type FormState = {
   winProbability: number;
   interactionDate: string;
   interactionType: string;
+  renewalDate: string;
 };
 
 const EMPTY_FORM: FormState = {
@@ -64,6 +65,7 @@ const EMPTY_FORM: FormState = {
   winProbability: 50,
   interactionDate: TODAY,
   interactionType: INTERACTION_TYPES[0],
+  renewalDate: "2027-04-01",
 };
 
 export default function NewCompanyDialog() {
@@ -82,7 +84,7 @@ export default function NewCompanyDialog() {
     event.preventDefault();
     const name = form.name.trim();
     if (!name) {
-      setNameError("Enter a company name.");
+      setNameError("Enter a brand name.");
       nameRef.current?.focus();
       return;
     }
@@ -101,6 +103,7 @@ export default function NewCompanyDialog() {
         date: form.interactionDate || TODAY,
         label: form.interactionType,
       },
+      renewalDate: form.renewalDate || TODAY,
       activityDays: daysSince(form.interactionDate || TODAY),
     };
 
@@ -118,13 +121,13 @@ export default function NewCompanyDialog() {
       >
         <form onSubmit={handleSubmit} noValidate className="flex flex-col">
           <DialogHeader>
-            <DialogTitle>New Company</DialogTitle>
+            <DialogTitle>New Brand (example)</DialogTitle>
             <DialogDescription>
               Add a company to the pipeline. It appears in the list right away.
             </DialogDescription>
           </DialogHeader>
 
-          <FormSection title="Company">
+          <FormSection title="Brand">
             <LogoUpload
               value={form.logo}
               companyName={form.name}
@@ -132,7 +135,7 @@ export default function NewCompanyDialog() {
             />
 
             <Field
-              label="Company name"
+              label="Brand name"
               htmlFor="company-name"
               required
               error={nameError ?? undefined}
@@ -145,7 +148,7 @@ export default function NewCompanyDialog() {
                   update("name", event.target.value);
                   if (nameError) setNameError(null);
                 }}
-                placeholder="Acme Inc."
+                placeholder="Example Brand Co."
                 autoComplete="off"
                 aria-invalid={nameError ? true : undefined}
                 aria-describedby={nameError ? "company-name-error" : undefined}
@@ -155,7 +158,7 @@ export default function NewCompanyDialog() {
             </Field>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Segment" htmlFor="company-segment">
+              <Field label="Category" htmlFor="company-segment">
                 <Select
                   value={form.segment}
                   onValueChange={(value) => update("segment", value as Segment)}
@@ -192,8 +195,8 @@ export default function NewCompanyDialog() {
             </div>
           </FormSection>
 
-          <FormSection title="Ownership & deal">
-            <Field label="Account owner" htmlFor="company-owner">
+          <FormSection title="Talent & retainer">
+            <Field label="Talent" htmlFor="company-owner">
               <Select
                 value={form.owner}
                 onValueChange={(value) => update("owner", value)}
@@ -215,7 +218,7 @@ export default function NewCompanyDialog() {
             </Field>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Pipeline value" htmlFor="company-pipeline">
+              <Field label="Monthly retainer ($)" htmlFor="company-pipeline">
                 <div className="relative">
                   <span
                     aria-hidden
@@ -238,7 +241,7 @@ export default function NewCompanyDialog() {
                   />
                 </div>
               </Field>
-              <Field label="Open deals" htmlFor="company-deals">
+              <Field label="Deliverables / mo" htmlFor="company-deals">
                 <Input
                   id="company-deals"
                   type="number"
@@ -252,7 +255,7 @@ export default function NewCompanyDialog() {
             </div>
 
             <Field
-              label="Win probability"
+              label="Renewal likelihood"
               htmlFor="company-win"
               trailing={
                 <span className="caption-style text-foreground tabular-nums">
@@ -263,7 +266,7 @@ export default function NewCompanyDialog() {
               <div className="flex flex-col gap-3">
                 <Slider
                   id="company-win"
-                  aria-label="Win probability"
+                  aria-label="Renewal likelihood"
                   min={0}
                   max={100}
                   step={1}
@@ -281,7 +284,19 @@ export default function NewCompanyDialog() {
             </Field>
           </FormSection>
 
-          <FormSection title="Last interaction">
+          <FormSection title="Renewal">
+            <Field label="Renewal date" htmlFor="company-renewal-date">
+              <Input
+                id="company-renewal-date"
+                type="date"
+                value={form.renewalDate}
+                onChange={(event) => update("renewalDate", event.target.value)}
+                className="tabular-nums"
+              />
+            </Field>
+          </FormSection>
+
+          <FormSection title="Last touchpoint">
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Date" htmlFor="company-interaction-date">
                 <Input
@@ -323,7 +338,7 @@ export default function NewCompanyDialog() {
             </DialogClose>
             <Button variant="primary" size="sm" type="submit">
               <PlusIcon aria-hidden className="size-3" />
-              Create Company
+              Create Brand
             </Button>
           </DialogFooter>
         </form>

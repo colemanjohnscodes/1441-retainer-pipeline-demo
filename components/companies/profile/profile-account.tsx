@@ -39,7 +39,7 @@ export default function ProfileAccount({ company, onOpen }: ProfileAccountProps)
         <span className="flex min-w-0 flex-1 flex-col gap-1">
           <span className="truncate">{company.name}</span>
           <span className="caption-style text-subtle truncate">
-            {company.openDeals} open deals · {company.tags.join(", ")}
+            {company.openDeals} deliverables/mo · {company.tags.join(", ")}
           </span>
         </span>
         <span className="flex shrink-0 flex-col items-end gap-1.5 tabular-nums">
